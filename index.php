@@ -11,7 +11,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } else {
         $todo->post($_POST['title'], $_POST['due_date']);
     }
+    $redirect_url = $_SERVER['HTTP_REFERER'];
+    header("Location: $redirect_url");
+    exit;
 }
+
 
 ?>
 <!DOCTYPE>

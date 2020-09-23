@@ -6,6 +6,7 @@ $todo = new Todo();
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $todo->post($_POST['title'], $_POST['due_date']);
 }
+
 ?>
 <!DOCTYPE>
 <html lang="ja">
@@ -42,7 +43,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <hr>
 
         <h2 class="text-muted py-3">やること一覧</h2>
-
+        <form method="POST" action="<?php print($_SERVER['PHP_SELF']) ?>">
+            <input type="hidden" name="method" value="DELETE">
+            <button class="btn btn-danger" type="submit">TODOを全削除する</button>
+        </form>
         <?php
         $todo_list = $todo->getList();
         ?>

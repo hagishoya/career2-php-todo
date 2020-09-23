@@ -53,4 +53,25 @@ class Todo
         $stmt->execute();
     }
 
+    /**
+     * タスクを削除する
+     */
+    public function delete()
+    {
+        $sql = "UPDATE `todo` SET `deleted_at` = NOW()";
+        $stmt = $this->dbh->prepare($sql);
+        $stmt->execute();
+    }
+
+    /**
+     * タスクを更新する
+     */
+    public function update(int $id, int $status)
+    {
+        $sql = "UPDATE `todo` SET status = :status WHERE id = :id";
+        $stmt = $this->dbh->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);//sqlインジェクション対策
+        $stmt->bindParam(':status', $status, PDO::PARAM_INT);
+        $stmt->execute();
+    }
 }

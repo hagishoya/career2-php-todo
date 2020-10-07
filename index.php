@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </div>
             <label for="due_date">画像アップロード</label>
             <br>
-            <input type="file" name="upfile" accept="image/jpeg">
+            <input type="file" name="image">
             <br><br>
             <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
             <input class="btn btn-primary"  type="submit" name="btn" value="TODOを作成する">
